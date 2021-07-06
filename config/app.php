@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'Guayaquil/Ecuador',
+    'timezone' => 'America/Guayaquil',
 
     /*
     |--------------------------------------------------------------------------
