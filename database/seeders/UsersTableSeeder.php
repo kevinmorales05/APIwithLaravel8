@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
  public function run()
  {
     // Vaciar la tabla
-    User::truncate();
+   // User::truncate();
     $faker = \Faker\Factory::create();
     // Crear la misma clave para todos los usuarios
     // conviene hacerlo antes del for para que el seeder
@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
     $password = Hash::make('123123');
     User::create([
     'name' => 'Administrador',
-    'email' => 'admin@prueba.com',
+    'email' => 'administrador@prueba.com',
     'password' => $password,
     ]);
     // Generar algunos usuarios para nuestra aplicacion
