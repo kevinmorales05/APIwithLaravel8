@@ -13,7 +13,7 @@ class ArticlesTableSeeder extends Seeder
     {
 
         // Vaciar la tabla articles.
-       // Article::truncate();
+        Article::truncate();
         $faker = \Faker\Factory::create();
  // Obtenemos la lista de todos los usuarios creados e
  // iteramos sobre cada uno y simulamos un inicio de

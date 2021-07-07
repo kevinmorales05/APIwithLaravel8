@@ -18,7 +18,7 @@ class CommentsTableSeeder extends Seeder
     public function run()
     {
         // Vaciamos la tabla comments
-       // Comment::truncate();
+        Comment::truncate();
         $faker = \Faker\Factory::create();
         // Obtenemos todos los artículos de la bdd
         $articles = Article::all();
