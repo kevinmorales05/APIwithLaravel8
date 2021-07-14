@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
  public function index()
  {
-    return new ArticleCollection(Article::paginate(5)) ; //cuando son mas objetos, es decir una coleccion
+    return new ArticleCollection(Article::paginate(10)) ; //cuando son mas objetos, es decir una coleccion
       //response()->json(ArticleResource::collection(Article::all()),200) como json, desaparece data, sin metadatos
    }
  public function show($id)
@@ -21,6 +21,9 @@ class ArticleController extends Controller
  }
  public function store(Request $request)
  {
+
+   //implementar con validacion
+
     $article = Article::create($request->all());
     return response()->json($article, 201);
  }
