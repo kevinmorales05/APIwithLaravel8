@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Http\Resources\Article as ArticleResource;
+use App\Http\Resources\ArticleCollection;
+
 
 class ArticleController extends Controller
 {
  public function index()
  {
-    return Article::all();
- }
- public function show(Article $article)
+    return new ArticleCollection(Article::paginate(5)) ; //cuando son mas objetos, es decir una coleccion
+      //response()->json(ArticleResource::collection(Article::all()),200) como json, desaparece data, sin metadatos
+   }
+ public function show($id)
  {
-    return Article::find($article);
+    return response()->json(new ArticleResource(Article::find($id)),200);
  }
  public function store(Request $request)
  {
