@@ -22,7 +22,7 @@ class ArticleController extends Controller
  public function store(Request $request)
  {
 
-   //implementar con validacion
+   
 
     $article = Article::create($request->all());
     return response()->json($article, 201);
