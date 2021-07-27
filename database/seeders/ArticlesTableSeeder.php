@@ -28,7 +28,8 @@ class ArticlesTableSeeder extends Seeder
         Article::create([
         'title' => $faker->sentence,
         'body' => $faker->paragraph,
-        'category_id' => $faker->numberBetween(1, 3) //con esto agrego un numero al azar en el id de categoria
+        'category_id' => $faker->numberBetween(1, 3), //con esto agrego un numero al azar en el id de categoria
+        'image' => $faker->image,
         ]);
         }
         }

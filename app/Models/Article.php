@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'body','category_id'];
+    protected $fillable = ['title', 'body','category_id', 'image'];
     //extraer el id del usuario loggeado cuando se crea un articulo
     public static function boot()
     {
