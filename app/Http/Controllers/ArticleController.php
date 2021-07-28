@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Resources\Article as ArticleResource;
 use App\Http\Resources\ArticleCollection;
+//para usar el storage
+use Illuminate\Support\Facades\Storage;
 
 
 class ArticleController extends Controller
@@ -70,4 +72,8 @@ class ArticleController extends Controller
    $article->delete();
    return 204;
  }
+ public function image(Article $article)
+   {
+      return response()->download(public_path(Storage::url($article->image)),$article->title);
+   }
 }

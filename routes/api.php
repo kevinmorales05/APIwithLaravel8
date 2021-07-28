@@ -12,6 +12,8 @@ Route::get('/articles', [ArticleController::class,'index']);
 //Rutas Usuario
 Route::post('/register', [UserController::class,'register']);
 Route::post('/login', [UserController::class,'authenticate']);
+//ruta para conocer la imagen
+Route::get('/articles/{article}/image', [ArticleController::class,'image']);
 //Proteccion de Rutas
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/user', [UserController::class,'getAuthenticatedUser']);
@@ -20,6 +22,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/articles', [ArticleController::class,'store']);
     Route::put('/articles/{article}', [ArticleController::class,'update']);
     Route::delete('/articles/{article}', [ArticleController::class,'delete']);
+    
     //Comments
     Route::get('/articles/{id}/comments', [CommentController::class,'index']);
     Route::get('/articles/{article}/comments/{comment}', [CommentController::class,'show']);
