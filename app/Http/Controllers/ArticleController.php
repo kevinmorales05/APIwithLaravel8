@@ -24,15 +24,18 @@ class ArticleController extends Controller
 
  public function index()
  {
-    return new ArticleCollection(Article::paginate(10)) ; //cuando son mas objetos, es decir una coleccion
+   //$this->authorize('viewAny', Article::class);  //Verificar autorizacion del rol
+   return new ArticleCollection(Article::paginate(10)) ; //cuando son mas objetos, es decir una coleccion
       //response()->json(ArticleResource::collection(Article::all()),200) como json, desaparece data, sin metadatos
    }
  public function show($id)
  {
-    return response()->json(new ArticleResource(Article::find($id)),200);
+   $this->authorize('view', $article); //Verificar autorizacion del rol 
+   return response()->json(new ArticleResource(Article::find($id)),200);
  }
  public function store(Request $request)
  {
+   $this->authorize('create', Article::class); 
   $request->validate([
    'title'=> 'required|string|unique:articles|max:255',
    'body'=> 'required',
@@ -49,12 +52,12 @@ class ArticleController extends Controller
    $article->image = $path;
    $article->save();
 
-      
       return response()->json(new ArticleResource($article), 201);
  }
 
  public function update(Request $request, Article $article)
  {
+    $this->authorize('update', $article); //para integrar la authorizacion de ArticlePolicy
    //$request -> validate(self::$rules, self::$messages); 
    $request->validate([
       'title'=> 'required|string|unique:articles|max:255',

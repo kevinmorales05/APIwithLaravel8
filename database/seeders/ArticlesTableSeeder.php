@@ -32,7 +32,8 @@ class ArticlesTableSeeder extends Seeder
             Article::create([
             'title' => $faker->sentence,
             'body' => $faker->paragraph,
-            'image' => 'articles/' . $image_name
+            'image' => 'articles/' . $image_name,
+            'category_id'=> strval(rand(1, 3))
             ]);
            }
 
