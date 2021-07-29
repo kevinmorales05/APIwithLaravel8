@@ -24,14 +24,14 @@ class ArticleController extends Controller
 
  public function index()
  {
-   //$this->authorize('viewAny', Article::class);  //Verificar autorizacion del rol
+   //$this->authorize('viewAny', Article::class);  //Verificar autorizacion del rol, pasa el nombre del modelo
    return new ArticleCollection(Article::paginate(10)) ; //cuando son mas objetos, es decir una coleccion
       //response()->json(ArticleResource::collection(Article::all()),200) como json, desaparece data, sin metadatos
    }
- public function show($id)
+ public function show(Article $article)
  {
    $this->authorize('view', $article); //Verificar autorizacion del rol 
-   return response()->json(new ArticleResource(Article::find($id)),200);
+   return response()->json(new ArticleResource($article),200);
  }
  public function store(Request $request)
  {

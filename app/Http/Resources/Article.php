@@ -24,9 +24,9 @@ class Article extends JsonResource
             'image' => $this->image,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'user' => "/api/users". $this-> user_id,
+            'user' => "/api/users/". $this-> user_id,
             //'user' => User::find($this -> user_id), normalmente pero retorna mucha informacion
-            'category' => "/api/categories".$this -> category_id,
+            'category' => "/api/categories/".$this -> category_id,
             ];
     }
 }

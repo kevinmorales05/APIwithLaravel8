@@ -18,7 +18,7 @@ Route::get('/articles/{article}/image', [ArticleController::class,'image']);
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/user', [UserController::class,'getAuthenticatedUser']);
     //Articles
-    Route::get('/articles/{id}', [ArticleController::class,'show']);
+    Route::get('/articles/{article}', [ArticleController::class,'show']);
     Route::post('/articles', [ArticleController::class,'store']);
     Route::put('/articles/{article}', [ArticleController::class,'update']);
     Route::delete('/articles/{article}', [ArticleController::class,'delete']);
