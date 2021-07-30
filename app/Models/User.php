@@ -95,6 +95,11 @@ class User extends Authenticatable implements JWTSubject
         }
             return false;
     }
+    //para las relaciones polimorficas
+    public function userable()
+    {
+        return $this->morphTo();
+    }
 
     protected $casts = [
         'email_verified_at' => 'datetime',
