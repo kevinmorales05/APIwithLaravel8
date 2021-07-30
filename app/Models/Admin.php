@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
-    use HasFactory;
+    protected $fillable =['credential_number'];
+    public $timestamps = false;//para no usar timestamps
     public function user()
     {
         return $this->morphOne('App\Models\User', 'userable');

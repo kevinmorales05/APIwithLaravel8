@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Writer extends Model
 {
-    use HasFactory;
+    protected $fillable =['editorial', 'short_bio'];
+    public $timestamps = false;//para no usar timestamps
     public function user()
     {
         return $this->morphOne('App\Models\User', 'userable');
