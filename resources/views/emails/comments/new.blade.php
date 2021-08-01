@@ -12,7 +12,7 @@ Ver Comentario
 @endcomponent
 
 @component('mail::panel')
-This is the panel content.
+Este es el panel de control
 
 @endcomponent
 @component('mail::table')
