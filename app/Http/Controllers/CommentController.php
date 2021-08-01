@@ -6,6 +6,8 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Resources\Comment as CommentResource;
 use App\Models\Article;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewComment;
 
 
 class CommentController extends Controller
@@ -32,7 +34,8 @@ class CommentController extends Controller
             ]
         );
         $comment= $article->comments()->save(new Comment($request->all()));
-        return response()->json($comment, 201);
+        Mail::to($article->user)->send(new NewComment($comment));
+        return response()->json(new CommentResource($comment), 201);
     }
 
   
