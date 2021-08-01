@@ -17,8 +17,16 @@ class NewComment extends Mailable
         $this->comment = $comment;
     }
    
+   // public function build()
+   // {
+   //     return $this->view('emails.comments.new');
+   // }
     public function build()
     {
-        return $this->view('emails.comments.new');
+        return $this->view('emails.comments.new')->attach('storage/archivo.pdf', [
+        'as' => 'name.pdf',
+        'mime' => 'application/pdf',
+        ]);
     }
+
 }
