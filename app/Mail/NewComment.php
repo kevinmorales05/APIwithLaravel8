@@ -23,10 +23,11 @@ class NewComment extends Mailable
    // }
     public function build()
     {
-        return $this->view('emails.comments.new')->attach('storage/archivo.pdf', [
+        return $this->markdown('emails.comments.new')->attach('storage/archivo.pdf', [ //uso markdowwn en vez de view para usar markdowns en vez de html
         'as' => 'name.pdf',
         'mime' => 'application/pdf',
         ]);
+      
     }
 
 }
